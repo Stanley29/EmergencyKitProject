@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/modern office extras/Demo.unity
+- path: Assets/Scenes/HeavyMedicalKitScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
