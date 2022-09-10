@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SC_InventorySystem : MonoBehaviour
@@ -11,6 +12,7 @@ public class SC_InventorySystem : MonoBehaviour
     bool showInventory = false;
     float windowAnimation = 1;
     float animationTimer = 0;
+    List<SC_PickItem> collectedItems;//collected items list
 
     //UI Drag & Drop
     int hoveringOverIndex = -1;
@@ -21,17 +23,25 @@ public class SC_InventorySystem : MonoBehaviour
     SC_PickItem detectedItem;
     int detectedItemIndex;
 
+    //external property for collected items list number access
+    public int CollectedItemsCount   // property
+    {
+        get { return collectedItems.Count; }   // get method
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;  //collected items list initiate
+        //Cursor.lockState = CursorLockMode.Locked;
 
         //Initialize Item Slots
         for (int i = 0; i < itemSlots.Length; i++)
         {
             itemSlots[i] = -1;
         }
+
+        collectedItems = new List<SC_PickItem>();//collected items list initiate
     }
 
     // Update is called once per frame
@@ -82,6 +92,12 @@ public class SC_InventorySystem : MonoBehaviour
         {
             if (hoveringOverIndex < 0)
             {
+                //remove item from collected items list
+                if (availableItems[itemSlots[itemIndexToDrag]].itemName.Contains("Valuable"))
+                {
+                    collectedItems.RemoveAt(collectedItems.Count - 1);
+                }
+
                 //Drop the item outside
                 Instantiate(availableItems[itemSlots[itemIndexToDrag]], playerController.playerCamera.transform.position + (playerController.playerCamera.transform.forward), Quaternion.identity);
                 itemSlots[itemIndexToDrag] = -1;
@@ -116,6 +132,11 @@ public class SC_InventorySystem : MonoBehaviour
                 {
                     itemSlots[slotToAddTo] = detectedItemIndex;
                     detectedItem.PickItem();
+                }
+                //add pick item to collected items list
+                if (detectedItem.itemName.Contains("Valuable"))
+                {
+                    collectedItems.Add(detectedItem);
                 }
             }
         }

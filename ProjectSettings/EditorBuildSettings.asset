@@ -4,5 +4,29 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/InputMenu.unity
+    guid: 0aa2fa5bcca667742b2384d00e6365c2
+  - enabled: 1
+    path: Assets/Scenes/PetEmergencyKitScene.unity
+    guid: 3b8bbdefefaa3f34f83aa2c32f36f5b3
+  - enabled: 1
+    path: Assets/Scenes/LightMedicalKitScene.unity
+    guid: b587ffbca730b8c4ebf588c2adca979d
+  - enabled: 1
+    path: Assets/Scenes/EmergencyBagKitScene.unity
+    guid: 060b95ca59d02f549b7c2720754250ea
+  - enabled: 1
+    path: Assets/Scenes/HeavyMedicalKitScene.unity
+    guid: 3a3b52e6c557d614f960a3e1684f33e5
+  - enabled: 1
+    path: Assets/Scenes/FoodKitScene.unity
+    guid: 34583f47154918647bab289b7780c567
+  - enabled: 1
+    path: Assets/Scenes/ClothesKitScene.unity
+    guid: 4fb93eed116ac574495c4dde86e0714f
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: 7707e37b34154cf49906be2e28ab0ab6
   m_configObjects: {}
