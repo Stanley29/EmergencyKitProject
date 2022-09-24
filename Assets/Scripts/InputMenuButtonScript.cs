@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class InputMenuButtonScript : MonoBehaviour
 {
-    public GameObject settingsPanel;
-    public GameObject startPanel;
+    //public GameObject settingsPanel;
+    //public GameObject startPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +32,4 @@ public class InputMenuButtonScript : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void SettingsButton()
-    {
-        settingsPanel.SetActive(true);
-        startPanel.SetActive(false);
-    }
-
 }
