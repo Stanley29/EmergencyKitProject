@@ -12,7 +12,7 @@ public class ButtonsScript : MonoBehaviour
     public Text text;
     public Text infoText;
     public string TaskForTheLevel = "Please, collect 5 valuable items.Are you ready?";
-    public float timeLeft = 10.0f;
+    public float timeLeft = SettingsScript.LevelHardness;
     bool TimerStarted = false;
     public int NeededItemsNumber = 5;
     public SC_InventorySystem sc_InventorySystem;
