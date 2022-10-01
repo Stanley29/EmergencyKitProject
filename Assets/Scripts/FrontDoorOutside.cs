@@ -24,7 +24,16 @@ public class FrontDoorOutside : MonoBehaviour
     {
         // SceneManager.LoadScene(2);
         panel.SetActive(true);
-        outText.text = "Are you sure to get out?";
+
+        if (SettingsScript.GameLanguage == "English")
+        {
+            outText.text = PreferencesScript.OutTextEng;
+        }
+        else
+        {
+            outText.text = PreferencesScript.OutTextUkr;
+        }
+        
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }

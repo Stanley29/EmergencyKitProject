@@ -10,17 +10,106 @@ public class ButtonsScript : MonoBehaviour
     public GameObject outPanel;
     public GameObject pausePanel;
     public Text text;
-    public Text infoText;
-    public string TaskForTheLevel = "Please, collect 5 valuable items.Are you ready?";
+    public Text StartButtonText;
+
     float timeLeft = SettingsScript.LevelHardness;
     bool TimerStarted = false;
     public int NeededItemsNumber = 5;
     public SC_InventorySystem sc_InventorySystem;
+
+    public Text infoText;
+
+    //pause panel
+    public Text pauseText;
+    public Text resumeText;
+    public Text quitText;
+
+    //out panel
+    public Text yesButtonOutText;
+    public Text noButtonOutText;
+
     // Start is called before the first frame update
     void Start()
     {
         PauseGame();
-        infoText.text = TaskForTheLevel;
+
+        if (SettingsScript.GameLanguage == "English")
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "PetEmergencyKitScene":
+                    infoText.text = PreferencesScript.TaskForTheLevelEng;
+                    break;
+                case "ClothesKitScene":
+                    infoText.text = PreferencesScript.TaskForTheClothesLevelEng;
+                    break;
+                case "FoodKitScene":
+                    infoText.text = PreferencesScript.TaskForTheFoodLevelEng;
+                    break;
+                case "HeavyMedicalKitScene":
+                    infoText.text = PreferencesScript.TaskForTheHeavyMedicalLevelEng;
+                    break;
+                case "LightMedicalKitScene":
+                    infoText.text = PreferencesScript.TaskForTheLigthMedicalLevelEng;
+                    break;
+                case "EmergencyBagKitScene":
+                    infoText.text = PreferencesScript.TaskForTheEmergencyLevelEng;
+                    break;
+                default:
+                    infoText.text = "Please, collect 5 valuable items. Are you ready?";
+                    break;
+            }
+
+            StartButtonText.text = PreferencesScript.StartButtonTextEng;
+
+            //pause panel
+            pauseText.text = PreferencesScript.PauseTextEng;
+            resumeText.text = PreferencesScript.ResumeTextEng;
+            quitText.text = PreferencesScript.QuitButtonTextEng;
+
+            //out panel
+            yesButtonOutText.text = PreferencesScript.YesButtonOutTextEng;
+            noButtonOutText.text = PreferencesScript.NoButtonOutTextEng;
+        }
+        else
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "PetEmergencyKitScene":
+                    infoText.text = PreferencesScript.TaskForTheLevelUkr;
+                    break;
+                case "ClothesKitScene":
+                    infoText.text = PreferencesScript.TaskForTheClothesLevelUkr;
+                    break;
+                case "FoodKitScene":
+                    infoText.text = PreferencesScript.TaskForTheFoodLevelUkr;
+                    break;
+                case "HeavyMedicalKitScene":
+                    infoText.text = PreferencesScript.TaskForTheHeavyMedicalLevelUkr;
+                    break;
+                case "LightMedicalKitScene":
+                    infoText.text = PreferencesScript.TaskForTheLigthMedicalLevelUkr;
+                    break;
+                case "EmergencyBagKitScene":
+                    infoText.text = PreferencesScript.TaskForTheEmergencyLevelUkr;
+                    break;
+                default:
+                    infoText.text = "Please, collect 5 valuable items. Are you ready?";
+                    break;
+            }
+
+            StartButtonText.text = PreferencesScript.StartButtonTextUkr;
+            
+            //pause panel
+            pauseText.text = PreferencesScript.PauseTextUkr;
+            resumeText.text = PreferencesScript.ResumeTextUkr;
+            quitText.text = PreferencesScript.QuitButtonTextUkr;
+
+            //out panel
+            yesButtonOutText.text = PreferencesScript.YesButtonOutTextUkr;
+            noButtonOutText.text = PreferencesScript.NoButtonOutTextUkr;
+        }
+        
     }
 
     // Update is called once per frame
@@ -121,13 +210,30 @@ public class ButtonsScript : MonoBehaviour
     {
         Time.timeScale = 0;
         infoText.color = Color.red;
-        infoText.text = "Game Over... ";
+
+        if (SettingsScript.GameLanguage == "English")
+        {
+            infoText.text = PreferencesScript.FailureTextEng;
+        }
+        else
+        {
+            infoText.text = PreferencesScript.FailureTextUkr;
+        }
     }
 
     void GameWin()
     {
         infoText.color = Color.green;
-        infoText.text = "You win! ";
+
+        if (SettingsScript.GameLanguage == "English")
+        {
+            infoText.text = PreferencesScript.WinTextEng;
+        }
+        else
+        {
+            infoText.text = PreferencesScript.WinTextUkr;
+        }
+        
     }
 
     void DisplayTime(float timeToDisplay)
